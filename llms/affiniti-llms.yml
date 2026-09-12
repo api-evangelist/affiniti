@@ -1,0 +1,17 @@
+generated: '2026-09-12'
+method: searched
+source: https://extu.com/llms.txt
+http_status: 200
+content_type: text/plain; charset=utf-8
+bytes: 274992
+file: affiniti-llms.txt
+subject: Extu (the brand Affiniti / OneAffiniti operates under today)
+generator: Rank Math SEO WordPress plugin
+note: >-
+  Served verbatim by the provider at https://extu.com/llms.txt and identically at
+  https://oneaffiniti.com/llms.txt. It is a generated index of the WordPress marketing site —
+  three sections (Posts, Pages, Resources) totalling 661 titled links with descriptions. It
+  advertises no API, developer portal, SDK, webhook or specification: a case-insensitive scan for
+  "openapi", "swagger" and a standalone "API" across the whole 275KB document returns zero hits,
+  which is the strongest single piece of evidence that this company publishes no developer
+  program. /llms-full.txt returns 404.

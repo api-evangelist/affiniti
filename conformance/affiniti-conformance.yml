@@ -1,0 +1,86 @@
+generated: '2026-09-12'
+method: probed
+source: >-
+  https://cms-login.extu.com/.well-known/openid-configuration and
+  https://pexp-login.extu.com/.well-known/openid-configuration
+note: >-
+  Every assertion below is read out of a document the provider actually serves. There is no
+  OpenAPI, AsyncAPI, GraphQL SDL or MCP manifest anywhere on this company's surface, so no
+  contract-level standard (RFC 9457 problem details, JSON:API, OData, pagination, idempotency)
+  can be asserted either way — those are recorded as unknown rather than false, because there is
+  no contract to read them from. Affiniti/Extu sells channel marketing and incentive software;
+  its market (through-channel marketing automation) has no domain interchange standard that a
+  contract could declare, so domain_standard is not applicable and is not scored against it.
+standards:
+- id: oauth2
+  conforms: true
+  evidence: >-
+    Both hosts expose RFC 6749 authorization and token endpoints
+    (https://pexp-login.extu.com/authorize, /oauth/token) in their discovery documents.
+- id: oidc-discovery
+  conforms: true
+  evidence: >-
+    OpenID Connect Discovery 1.0 documents served at /.well-known/openid-configuration on
+    cms-login.extu.com and pexp-login.extu.com (HTTP 200, application/json).
+- id: rfc8414-oauth-authorization-server-metadata
+  conforms: true
+  evidence: >-
+    The same metadata is served at /.well-known/oauth-authorization-server on both hosts
+    (HTTP 200).
+- id: rfc7636-pkce
+  conforms: true
+  evidence: 'code_challenge_methods_supported: [S256, plain]'
+- id: rfc7009-token-revocation
+  conforms: true
+  evidence: 'revocation_endpoint: https://pexp-login.extu.com/oauth/revoke'
+- id: rfc8628-device-authorization-grant
+  conforms: true
+  evidence: 'device_authorization_endpoint and urn:ietf:params:oauth:grant-type:device_code in grant_types_supported'
+- id: rfc7591-dynamic-client-registration
+  conforms: true
+  evidence: 'registration_endpoint: https://pexp-login.extu.com/oidc/register'
+- id: rfc8693-token-exchange
+  conforms: true
+  evidence: 'urn:ietf:params:oauth:grant-type:token-exchange in grant_types_supported'
+- id: rfc7523-jwt-bearer
+  conforms: true
+  evidence: 'urn:ietf:params:oauth:grant-type:jwt-bearer in grant_types_supported'
+- id: rfc9449-dpop
+  conforms: true
+  evidence: 'dpop_signing_alg_values_supported: [ES256]'
+- id: ciba-backchannel-authentication
+  conforms: true
+  evidence: 'backchannel_authentication_endpoint present; backchannel_token_delivery_modes_supported: [poll]'
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on every host probed.
+- id: rfc9727-api-catalog
+  conforms: false
+  evidence: /.well-known/api-catalog returns 404 on every host probed.
+- id: apis-json
+  conforms: false
+  evidence: /apis.json and /.well-known/apis.json return 404 (or a Cloudflare challenge) on every host probed.
+- id: a2a-agent-card
+  conforms: false
+  evidence: /.well-known/agent-card.json and /.well-known/agent.json return 404 on every host probed.
+- id: openapi
+  conforms: false
+  evidence: >-
+    No OpenAPI at any probed location on extu.com, cms-api.extu.com, app.extu.com or
+    oneaffiniti.com; the provider's own llms.txt (661 entries) names no spec.
+- id: llms-txt
+  conforms: true
+  evidence: https://extu.com/llms.txt returns 200 text/plain, 274,992 bytes, saved to llms/affiniti-llms.txt.
+- id: gdpr
+  conforms: true
+  evidence: >-
+    Provider publishes a GDPR trust center (https://extu.com/legal/gdpr-trust-center/), a
+    subprocessor list (/legal/subprocessors/), a DPA security addendum (/legal/dpa/security/) and
+    partner/GDPR explainers, all listed in its own XML sitemap. Page bodies were not readable —
+    the HTML surface answers our crawler with a Cloudflare managed challenge.
+domain_standard:
+  applicable: false
+  note: >-
+    Through-channel marketing automation and channel incentives have no published interchange
+    standard (no SCIM/OData/OpenRTB/HL7-class equivalent) for a contract to declare. Reward-only
+    check; nothing is asserted.

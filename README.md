@@ -64,5 +64,37 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Affiniti is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
+Affiniti is the channel-marketing software company founded in Sydney, Australia by Joel Montgomery
+and listed under that name on the EquityZen secondary market, which is the lead this profile was
+harvested from. It traded for most of its life as **OneAffiniti**; Capstreet-backed Incentive
+Solutions acquired it in April 2021, and in September 2023 the combined business rebranded to
+**Extu**, the brand every live web property and the product carry today. `oneaffiniti.com` 301s to
+`extu.com`.
+
+**Not the same company as affiniti.com.** There is an unrelated New York fintech called Affiniti
+Finance, Inc. (`affiniti.com`, YC / SignalFire-backed, co-branded SMB commercial cards). It is a
+different company with a different EquityZen/Crunchbase record and is not profiled here. The
+EquityZen listing this repo was harvested from —
+[equityzen.com/company/affiniti](https://equityzen.com/company/affiniti) — names "digital marketing
+campaigns ... to markets and channels that are otherwise difficult to access" and "Founder & CEO
+Joel Montgomery", which is unambiguously the OneAffiniti/Extu company.
+
+## What was found
+
+| Surface | Result |
+|---|---|
+| OpenAPI / Swagger / GraphQL / gRPC / WSDL / AsyncAPI | **None.** No spec at any probed path on `extu.com`, `cms-api.extu.com`, `app.extu.com` or `oneaffiniti.com`. |
+| Developer portal / API reference / SDKs / CLI | **None.** The site's own `llms.txt` (661 indexed pages) and full XML sitemap name no developer page; no packages on npm, PyPI or RubyGems. |
+| `llms.txt` | **Served** — `https://extu.com/llms.txt`, 274,992 bytes, saved verbatim to `llms/affiniti-llms.txt`. |
+| `/.well-known/` | **Two hits** — OIDC discovery + RFC 8414 metadata on `cms-login.extu.com` and `pexp-login.extu.com` (Auth0 custom domains). Everything else 404s on every host. |
+| A2A agent card / MCP server | **None** on any host. |
+| Compliance | SOC 2 Type 2 (provider-announced) and a GDPR trust center. |
+| Private backend | `cms-api.extu.com` is the Laravel service the Extu CMS app calls (`middlewareBaseUrl` in the `app.extu.com` bundle). Every anonymous route 404s; there is no public contract. |
+
+`extu.com` answers our crawler with a Cloudflare managed challenge (HTTP 403, `cf-mitigated:
+challenge`) on every HTML URL, so page bodies were not read. Its `robots.txt`, `sitemap.xml`,
+`llms.txt` and `/.well-known/` paths all answer normally, and those are the sources every finding
+above rests on.
+
+- https://extu.com/
 - https://equityzen.com/company/affiniti

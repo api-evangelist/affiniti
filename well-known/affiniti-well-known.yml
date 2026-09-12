@@ -1,0 +1,173 @@
+generated: '2026-09-12'
+method: probed
+source: >-
+  Direct HTTP probe of the named /.well-known/ path list against every host this record knows —
+  the registrable domain and www, the legacy oneaffiniti.com brand domain, the customer-facing
+  Partner Experience app, its CMS backend, the partner knowledge base, and the two Auth0 custom
+  domains the apps authenticate against.
+note: >-
+  Affiniti now operates as Extu, so every host probed is an extu.com host plus the legacy
+  oneaffiniti.com domain, which 301s to extu.com. Two hosts serve real documents:
+  cms-login.extu.com and pexp-login.extu.com each return a complete OpenID Connect discovery
+  document (and the identical body at the RFC 8414 oauth-authorization-server path) for the Auth0
+  tenant that fronts the CMS and the Partner Experience Platform respectively. Nothing else hit:
+  no security.txt, no api-catalog, no apis.json, no ai-plugin, no AAuth resource and no A2A agent
+  card on any host. extu.com serves its HTML behind a Cloudflare managed challenge (403,
+  cf-mitigated: challenge) but answers /.well-known/ paths straight from nginx with a hard 404,
+  so those negatives are real rather than an artifact of the challenge.
+path_echo_control: passed
+hosts:
+- host: https://extu.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/aauth-resource.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /.well-known/apis.json, status: 404}
+  - {path: /apis.json, status: 403, note: Cloudflare managed challenge on the HTML surface, not a document}
+  - {path: /apis.yml, status: 403, note: Cloudflare managed challenge on the HTML surface, not a document}
+  - {path: /.well-known/affiniti-negative-control-7f3ab91c.json, status: 404, note: negative control}
+- host: https://www.extu.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/aauth-resource.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /.well-known/apis.json, status: 404}
+  - {path: /apis.json, status: 403}
+  - {path: /apis.yml, status: 403}
+  - {path: /.well-known/affiniti-negative-control-7f3ab91c.json, status: 404, note: negative control}
+- host: https://oneaffiniti.com
+  note: Legacy brand domain; 301s to extu.com for HTML, serves /.well-known/ from nginx.
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/aauth-resource.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /.well-known/apis.json, status: 404}
+  - {path: /apis.json, status: 404}
+  - {path: /apis.yml, status: 403}
+  - {path: /.well-known/affiniti-negative-control-7f3ab91c.json, status: 404, note: negative control}
+- host: https://cms-login.extu.com
+  note: >-
+    Auth0 custom domain fronting the Extu CMS application at app.extu.com. Two real documents;
+    the negative control 404s, so this is not a path-echoing host.
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: affiniti-cms-login-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: affiniti-cms-login-oauth-authorization-server.json
+    note: RFC 8414 path returns the identical body to the OIDC discovery document.
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/aauth-resource.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /.well-known/apis.json, status: 404}
+  - {path: /apis.json, status: 404}
+  - {path: /apis.yml, status: 404}
+  - {path: /.well-known/affiniti-negative-control-7f3ab91c.json, status: 404, note: negative control}
+- host: https://pexp-login.extu.com
+  note: >-
+    Auth0 custom domain fronting the Partner Experience Platform (PEXP). Same shape as the CMS
+    tenant plus an end_session_endpoint; negative control 404s.
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: affiniti-pexp-login-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: affiniti-pexp-login-oauth-authorization-server.json
+    note: RFC 8414 path returns the identical body to the OIDC discovery document.
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/aauth-resource.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /.well-known/apis.json, status: 404}
+  - {path: /apis.json, status: 404}
+  - {path: /apis.yml, status: 404}
+  - {path: /.well-known/affiniti-negative-control-7f3ab91c.json, status: 404, note: negative control}
+- host: https://cms-api.extu.com
+  note: >-
+    Laravel backend the Extu CMS app calls (config key middlewareBaseUrl in the app.extu.com Nuxt
+    bundle). Every anonymous route returns a JSON "route could not be found" 404, including the
+    negative control — a real service with no public contract, not a catch-all.
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/aauth-resource.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /.well-known/apis.json, status: 404}
+  - {path: /apis.json, status: 404}
+  - {path: /apis.yml, status: 404}
+  - {path: /.well-known/affiniti-negative-control-7f3ab91c.json, status: 404, note: negative control}
+- host: https://app.extu.com
+  hit_count: 0
+  soft_404_control:
+    path: /.well-known/affiniti-negative-control-7f3ab91c.json
+    status: 200
+    bytes: 5589
+    note: >-
+      Nuxt single-page-app catch-all. Every path — including the control that cannot exist —
+      returns the identical 5,589-byte HTML shell titled "Extu | Partner Experience Platform".
+      No document was fetched or saved from this host and none of its 200s is a hit.
+  documents:
+  - {path: /.well-known/security.txt, status: 200, note: SPA shell, not a document}
+  - {path: /.well-known/openid-configuration, status: 200, note: SPA shell, not a document}
+  - {path: /.well-known/oauth-authorization-server, status: 200, note: SPA shell, not a document}
+  - {path: /.well-known/oauth-protected-resource, status: 200, note: SPA shell, not a document}
+  - {path: /.well-known/api-catalog, status: 200, note: SPA shell, not a document}
+  - {path: /.well-known/ai-plugin.json, status: 200, note: SPA shell, not a document}
+  - {path: /.well-known/aauth-resource.json, status: 200, note: SPA shell, not a document}
+  - {path: /.well-known/agent-card.json, status: 200, note: SPA shell, not a document}
+  - {path: /.well-known/agent.json, status: 200, note: SPA shell, not a document}
+  - {path: /.well-known/apis.json, status: 200, note: SPA shell, not a document}
+  - {path: /apis.json, status: 200, note: SPA shell, not a document}
+  - {path: /apis.yml, status: 200, note: SPA shell, not a document}
+  - {path: /.well-known/affiniti-negative-control-7f3ab91c.json, status: 200, note: negative control FAILED - catch-all}
+- host: https://partners.extu.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/apis.json, status: 404}
+  - {path: /apis.json, status: 403, note: Cloudflare managed challenge}
+  - {path: /.well-known/affiniti-negative-control-7f3ab91c.json, status: 404, note: negative control}
+summary:
+  hosts_probed: 8
+  documents_found: 4
+  document_hosts: [cms-login.extu.com, pexp-login.extu.com]
+  security_txt: false
+  api_catalog: false
+  apis_json: false
+  agent_card: false
+  aauth_resource: false

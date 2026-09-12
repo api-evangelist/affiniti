@@ -1,0 +1,42 @@
+generated: '2026-09-12'
+method: probed
+source: >-
+  scopes_supported in https://cms-login.extu.com/.well-known/openid-configuration and
+  https://pexp-login.extu.com/.well-known/openid-configuration
+note: >-
+  Both Auth0 tenants advertise the identical set, and every entry is an OpenID Connect standard
+  scope or standard claim exposed as a scope. There is NO product/API scope here — no
+  campaigns:read, no partners:write — because Affiniti/Extu publishes no API for a third party to
+  request scopes against. Recorded because it is what the provider actually serves; do not read it
+  as a developer permissions model.
+docs: null
+schemes:
+- name: extu-cms-auth0
+  source: well-known/affiniti-cms-login-openid-configuration.json
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://cms-login.extu.com/authorize
+    tokenUrl: https://cms-login.extu.com/oauth/token
+- name: extu-pexp-auth0
+  source: well-known/affiniti-pexp-login-openid-configuration.json
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://pexp-login.extu.com/authorize
+    tokenUrl: https://pexp-login.extu.com/oauth/token
+scopes:
+- {scope: openid, description: OpenID Connect authentication, standard: true}
+- {scope: profile, description: Basic profile claims, standard: true}
+- {scope: offline_access, description: Issue a refresh token, standard: true}
+- {scope: name, description: Full name claim, standard: true}
+- {scope: given_name, description: Given name claim, standard: true}
+- {scope: family_name, description: Family name claim, standard: true}
+- {scope: nickname, description: Nickname claim, standard: true}
+- {scope: email, description: Email address claim, standard: true}
+- {scope: email_verified, description: Email verification status claim, standard: true}
+- {scope: picture, description: Profile picture claim, standard: true}
+- {scope: created_at, description: Account creation timestamp claim, standard: true}
+- {scope: identities, description: Linked identity providers (Auth0 extension), standard: false}
+- {scope: phone, description: Phone number claim, standard: true}
+- {scope: address, description: Address claim, standard: true}
+scope_count: 14
+product_scopes: 0

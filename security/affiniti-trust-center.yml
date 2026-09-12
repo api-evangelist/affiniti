@@ -1,0 +1,39 @@
+generated: '2026-09-12'
+method: searched
+probe: false
+source: https://extu.com/llms.txt
+url: https://extu.com/legal/gdpr-trust-center/
+certifications:
+- name: SOC 2 Type 2
+  scope: Channel incentive management (CIM) and through-channel marketing (TCM) solutions
+  claimed_by: provider
+  evidence: https://extu.com/resource/extu-soc-2-type-2-compliance/
+- name: GDPR
+  scope: EU data protection posture for clients and channel-partner participants
+  claimed_by: provider
+  evidence: https://extu.com/legal/gdpr-trust-center/
+pages:
+- {url: 'https://extu.com/legal/gdpr-trust-center/', title: GDPR Trust Center}
+- {url: 'https://extu.com/legal/gdpr-and-extu/', title: GDPR and Extu}
+- {url: 'https://extu.com/legal/gdpr-and-partners/', title: GDPR and Partners}
+- {url: 'https://extu.com/legal/gdpr-explained/', title: GDPR Explained}
+- {url: 'https://extu.com/legal/dpa/security/', title: Data Processing Addendum - Security}
+- {url: 'https://extu.com/legal/subprocessors/', title: Subprocessors}
+- {url: 'https://extu.com/legal/ethics/', title: Ethics}
+- {url: 'https://extu.com/legal/global-collection-statement/', title: Global Collection Statement}
+evidence:
+- source: https://extu.com/llms.txt
+  kind: provider-published index
+  quote: >-
+    "Extu Achieves SOC 2 Type 2 Compliance ... successfully achieved SOC 2 Type 2 certification for
+    our channel incentive management (CIM) and through-channel marketing (TCM) solutions."
+- source: https://extu.com/page-sitemap.xml
+  kind: provider-published sitemap
+  quote: Lists every /legal/ page above, including the GDPR trust center.
+note: >-
+  No dedicated trust.extu.com or security.extu.com host exists and there is no security.txt on any
+  host. The certifications above are the provider's own published claims, read from titles and
+  descriptions in the llms.txt and sitemap that extu.com serves; the page BODIES could not be read
+  because extu.com answers our crawler with a Cloudflare managed challenge (HTTP 403,
+  cf-mitigated: challenge) on every HTML URL. No audit report, certificate or attestation was
+  retrieved, and none is asserted here.

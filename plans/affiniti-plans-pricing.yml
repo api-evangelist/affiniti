@@ -1,0 +1,20 @@
+generated: '2026-09-12'
+method: searched
+source: https://extu.com/sitemap_index.xml
+plan_count: 0
+model: contact-sales
+note: >-
+  Affiniti/Extu publishes no pricing page and no plan tiers. Its own XML sitemap (page, post and
+  resource sitemaps, 223 resource URLs and 661 entries in llms.txt) contains no /pricing page and
+  no tier names; a direct probe of https://extu.com/pricing/ does not resolve to a pricing page
+  (the HTML surface answers our crawler with a Cloudflare managed challenge, so no 404 can be
+  proven, but the provider's own sitemap and llms.txt index — both fetched successfully — do not
+  list one). Commercial terms are quoted per program: the site routes every commercial path to
+  https://extu.com/contact/ and to ROI/attribution calculators (/resources/roi-calculator/,
+  /resources/tcm-roi-calculator/, /resources/cim-roi-calculator/) rather than to a self-serve
+  price. No API is sold, so there is no metered API plan to record.
+plans: []
+evidence:
+- {url: 'https://extu.com/sitemap_index.xml', status: 200, finding: no pricing page in any child sitemap}
+- {url: 'https://extu.com/llms.txt', status: 200, finding: 661 indexed pages, none a pricing page}
+- {url: 'https://extu.com/pricing/', status: 403, finding: Cloudflare managed challenge, not a published price}

@@ -1,8 +1,18 @@
 aid: affiniti
 name: Affiniti
-description: 'Affiniti is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  Affiniti is the channel-marketing software company founded in Sydney, Australia by Joel
+  Montgomery and listed under that name on the EquityZen secondary market; it traded for most of
+  its life as OneAffiniti and, after Capstreet-backed Incentive Solutions acquired it in April
+  2021, the combined business rebranded to Extu in September 2023, the brand its product and every
+  live web property carry today. It sells a through-channel marketing automation and channel
+  incentive platform that suppliers and distributors use to run co-branded campaigns, content
+  syndication, rewards, rebates, SPIFFs and attribution for their reseller partners in technology,
+  building, automotive, energy, insurance and medical channels. It is a SaaS product and managed
+  service: its own llms.txt and full XML sitemap list no developer portal, API reference, SDK or
+  machine-readable contract of any kind.
 url: https://raw.githubusercontent.com/api-evangelist/affiniti/refs/heads/main/apis.yml
+image: https://extu.com/wp-content/uploads/2023/05/Extu_Logo_FullColor.png
 x-type: company
 x-source: harvest:secondary-market
 x-tier: stub
@@ -12,6 +22,15 @@ created: '2026-09-12'
 modified: '2026-09-12'
 tags:
 - Company
+- Channel Marketing
+- Marketing Automation
+- Through-Channel Marketing
+- Partner Marketing
+- Incentives
+- Loyalty
+- Rebates
+- Rewards
+- B2B SaaS
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +38,125 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/affiniti-domain-security.yml
 - type: Website
+  url: https://extu.com/
+- type: Product
+  url: https://extu.com/platform/
+- type: About
+  url: https://extu.com/about/
+- type: Blog
+  url: https://extu.com/blog/
+- type: BlogRSS
+  url: https://extu.com/feed/
+- type: Support
+  url: https://partners.extu.com/knowledge-base/
+- type: ContactUs
+  url: https://extu.com/contact/
+- type: Careers
+  url: https://extu.com/about/careers/
+- type: Login
+  url: https://app.extu.com/
+- type: PrivacyPolicy
+  url: https://extu.com/legal/privacy/
+- type: TermsOfService
+  url: https://extu.com/legal/general-terms-of-service/
+- type: TrustCenter
+  url: security/affiniti-trust-center.yml
+- type: Trust
+  url: https://extu.com/legal/gdpr-trust-center/
+- type: Compliance
+  url: https://extu.com/resource/extu-soc-2-type-2-compliance/
+- type: GitHubOrganization
+  url: https://github.com/OneAffiniti
+- type: LinkedIn
+  url: https://www.linkedin.com/company/extu/
+- type: YouTube
+  url: https://www.youtube.com/@ExtuHq
+- type: SecondaryMarket
+  name: EquityZen pre-IPO listing (third-party venue, not an Affiniti/Extu page)
   url: https://equityzen.com/company/affiniti
+- type: WellKnown
+  url: well-known/affiniti-well-known.yml
+- type: Authentication
+  url: authentication/affiniti-authentication.yml
+- type: OAuthScopes
+  url: scopes/affiniti-scopes.yml
+- type: Conformance
+  url: conformance/affiniti-conformance.yml
+- type: LLMsTxt
+  url: llms/affiniti-llms.txt
+- type: Plans
+  url: plans/affiniti-plans-pricing.yml
+x-identity:
+  resolved: >-
+    Affiniti (Sydney, founded by Joel Montgomery) traded as OneAffiniti, was acquired by
+    Capstreet-backed Incentive Solutions in April 2021, and the merged business rebranded to Extu
+    in September 2023. extu.com is the live surface; oneaffiniti.com 301s to it.
+  also_known_as: [OneAffiniti, Extu]
+  legal_entity_seen: Finnigan Investments (Australia) Pty Ltd trading as OneAffiniti (GitHub org owner)
+  not_to_be_confused_with: >-
+    Affiniti Finance, Inc. (affiniti.com), an unrelated New York fintech selling co-branded SMB
+    commercial cards and banking. Different company, different record; not profiled here.
+  evidence:
+  - url: https://equityzen.com/company/affiniti
+    status: 200
+    finding: 'Names "digital marketing campaigns" and "Founder & CEO Joel Montgomery" — the OneAffiniti company.'
+  - url: https://oneaffiniti.com/
+    status: 301
+    finding: Redirects to https://extu.com/
+  - url: https://api.github.com/orgs/oneaffiniti
+    status: 200
+    finding: 'Org name: "Finnigan Investments (Australia) Pty Ltd trading as OneAffiniti"; 0 public repos.'
+x-enrichment:
+  date: '2026-09-12'
+  status: minimal
+  artifacts_added: 13
+  pass: local-v3
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Affiniti — trading today as Extu after the OneAffiniti / Incentive Solutions merger — sells a
+    through-channel marketing and incentive SaaS platform as an end-user product and a managed
+    service, and publishes no developer program of any kind: its own llms.txt indexes 661 pages
+    and its three XML sitemaps every public URL, and neither names a developer portal, API
+    reference, SDK, webhook or specification, while every OpenAPI/GraphQL/MCP/agent-card path
+    probed on extu.com, oneaffiniti.com, app.extu.com and the cms-api.extu.com backend the
+    Partner Experience app actually calls returns 404 (a Laravel "route could not be found" JSON
+    body on cms-api, including for a random control path). The only machine-readable documents any
+    Extu host serves are the OpenID Connect discovery documents for the two Auth0 tenants behind
+    its CMS and partner logins, which are sign-in metadata for humans, not an API contract.
+  evidence:
+  - url: https://extu.com/llms.txt
+    status: 200
+  - url: https://extu.com/sitemap_index.xml
+    status: 200
+  - url: https://extu.com/robots.txt
+    status: 200
+  - url: https://cms-api.extu.com/openapi.json
+    status: 404
+  - url: https://cms-api.extu.com/swagger.json
+    status: 404
+  - url: https://cms-api.extu.com/api-docs
+    status: 404
+  - url: https://cms-api.extu.com/api/v1
+    status: 404
+  - url: https://extu.com/.well-known/agent-card.json
+    status: 404
+  - url: https://extu.com/.well-known/agent.json
+    status: 404
+  - url: https://extu.com/.well-known/api-catalog
+    status: 404
+  - url: https://extu.com/.well-known/security.txt
+    status: 404
+  - url: https://oneaffiniti.com/apis.json
+    status: 404
+  - url: https://cms-login.extu.com/.well-known/openid-configuration
+    status: 200
+  - url: https://pexp-login.extu.com/.well-known/openid-configuration
+    status: 200
+  - url: https://extu.com/.well-known/affiniti-negative-control-7f3ab91c.json
+    status: 404
+  checked: '2026-09-12'
