@@ -1,0 +1,21 @@
+{
+  "repo": "affiniti",
+  "feeds": [
+    {
+      "source": "https://extu.com/blog/",
+      "feed_url": "https://extu.com/blog/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
+    },
+    {
+      "source": "https://extu.com/about/",
+      "feed_url": "https://extu.com/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-09-13T13:00:00Z"
+}
