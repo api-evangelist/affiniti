@@ -64,37 +64,99 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Affiniti is the channel-marketing software company founded in Sydney, Australia by Joel Montgomery
-and listed under that name on the EquityZen secondary market, which is the lead this profile was
-harvested from. It traded for most of its life as **OneAffiniti**; Capstreet-backed Incentive
-Solutions acquired it in April 2021, and in September 2023 the combined business rebranded to
-**Extu**, the brand every live web property and the product carry today. `oneaffiniti.com` 301s to
-`extu.com`.
+Affiniti is the channel-marketing software company founded in Sydney, Australia by Joel Montgomery and listed under that name on the EquityZen secondary market; it traded for most of its life as OneAffiniti and, after Capstreet-backed Incentive Solutions acquired it in April 2021, the combined business rebranded to Extu in September 2023, the brand its product and every live web property carry today. It sells a through-channel marketing automation and channel incentive platform that suppliers and distributors use to run co-branded campaigns, content syndication, rewards, rebates, SPIFFs and attribution for their reseller partners in technology, building, automotive, energy, insurance and medical channels. It is a SaaS product and managed service: its own llms.txt and full XML sitemap list no developer portal, API reference, SDK or machine-readable contract of any kind.
 
-**Not the same company as affiniti.com.** There is an unrelated New York fintech called Affiniti
-Finance, Inc. (`affiniti.com`, YC / SignalFire-backed, co-branded SMB commercial cards). It is a
-different company with a different EquityZen/Crunchbase record and is not profiled here. The
-EquityZen listing this repo was harvested from —
-[equityzen.com/company/affiniti](https://equityzen.com/company/affiniti) — names "digital marketing
-campaigns ... to markets and channels that are otherwise difficult to access" and "Founder & CEO
-Joel Montgomery", which is unambiguously the OneAffiniti/Extu company.
+**Areas:** Company · Channel Marketing · Marketing Automation · Through-Channel Marketing · Partner Marketing · Incentives · Loyalty · Rebates · Rewards · B2B SaaS
 
-## What was found
+## Affiniti on APIs.io
 
-| Surface | Result |
+Everything profiled for Affiniti is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/affiniti/](https://apis.io/providers/affiniti/)** — or go straight to one of the APIs or properties below.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Affiniti Authentication](https://apis.io/security/affiniti/affiniti-authentication/)
+- [Affiniti Domain Security](https://apis.io/security/affiniti/affiniti-domain-security/)
+- [Affiniti Trust Center](https://apis.io/security/affiniti/affiniti-trust-center/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Affiniti Scopes](https://apis.io/scopes/affiniti/affiniti-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Affiniti Plans Pricing](https://apis.io/plans/affiniti/affiniti-plans-pricing/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://extu.com/)
+- [Support](https://partners.extu.com/knowledge-base/)
+- [Blog](https://extu.com/blog/)
+- [Compliance](https://extu.com/resource/extu-soc-2-type-2-compliance/)
+- [Terms of service](https://extu.com/legal/general-terms-of-service/)
+- [Privacy policy](https://extu.com/legal/privacy/)
+- [GitHub](https://github.com/OneAffiniti)
+
+## API Evangelist rating
+
+**Kin Score 24.2** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
 |---|---|
-| OpenAPI / Swagger / GraphQL / gRPC / WSDL / AsyncAPI | **None.** No spec at any probed path on `extu.com`, `cms-api.extu.com`, `app.extu.com` or `oneaffiniti.com`. |
-| Developer portal / API reference / SDKs / CLI | **None.** The site's own `llms.txt` (661 indexed pages) and full XML sitemap name no developer page; no packages on npm, PyPI or RubyGems. |
-| `llms.txt` | **Served** — `https://extu.com/llms.txt`, 274,992 bytes, saved verbatim to `llms/affiniti-llms.txt`. |
-| `/.well-known/` | **Two hits** — OIDC discovery + RFC 8414 metadata on `cms-login.extu.com` and `pexp-login.extu.com` (Auth0 custom domains). Everything else 404s on every host. |
-| A2A agent card / MCP server | **None** on any host. |
-| Compliance | SOC 2 Type 2 (provider-announced) and a GDPR trust center. |
-| Private backend | `cms-api.extu.com` is the Laravel service the Extu CMS app calls (`middlewareBaseUrl` in the `app.extu.com` bundle). Every anonymous route 404s; there is no public contract. |
+| Discoverability | 55.4 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 19.0 |
+| Access clarity | 43.4 |
 
-`extu.com` answers our crawler with a Cloudflare managed challenge (HTTP 403, `cf-mitigated:
-challenge`) on every HTML URL, so page bodies were not read. Its `robots.txt`, `sitemap.xml`,
-`llms.txt` and `/.well-known/` paths all answer normally, and those are the sources every finding
-above rests on.
+**Agent readiness 15.1** — agent-aware
 
-- https://extu.com/
-- https://equityzen.com/company/affiniti
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+
+**Regulatory alignment 39.2** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/affiniti/](https://apis.io/providers/affiniti/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Affiniti: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/affiniti/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
